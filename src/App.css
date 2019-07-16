@@ -15,6 +15,7 @@
   grid-area: header;
   border: solid 5px cadetblue;
   background-color: lightcyan;
+  margin: 0;
 }
 
 .nav {
