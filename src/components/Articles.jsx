@@ -13,18 +13,16 @@ class Articles extends Component {
     return (
       <div>
         <h2>{topic ? `Articles about ${topic}` : 'All Articles'}</h2>
-        <ul>
-          {articles.map(article => {
-            return (
-              <li key={article.article_id}>
-                {article.votes}
-                <Link to={`/articles/${article.article_id}`}>
-                  {article.title}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        {articles.map(article => {
+          return (
+            <div key={article.article_id} className='article'>
+              <Link to={`/articles/${article.article_id}`}>
+                {article.title}
+              </Link>
+              <span>{article.votes} votes</span>
+            </div>
+          );
+        })}
       </div>
     );
   }
