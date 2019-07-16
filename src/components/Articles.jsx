@@ -13,10 +13,29 @@ class Articles extends Component {
     return (
       <div>
         <h2>{topic ? `Articles about ${topic}` : 'All Articles'}</h2>
+        <label htmlFor='sort_by'>Sort by:</label>
+        <select id='sort_by'>
+          <option value='title' onClick={() => this.sortTable('title', 'asc')}>
+            Title A-Z
+          </option>
+          <option value='title' onClick={() => this.sortTable('title', 'desc')}>
+            Title Z-A
+          </option>
+          <option value='votes' onClick={() => this.sortTable('votes', 'asc')}>
+            Votes Lowest-Highest
+          </option>
+          <option value='votes' onClick={() => this.sortTable('votes', 'desc')}>
+            Votes Highest-Lowest
+          </option>
+        </select>
         {articles.map(article => {
           return (
             <div key={article.article_id} className='article'>
-              <Link to={`/articles/${article.article_id}`}>
+              <Link
+                to={`/articles/${article.article_id}`}
+                id={article.article_id}
+                onClick={this.handleClick}
+              >
                 {article.title}
               </Link>
               <span>{article.votes} votes</span>
@@ -32,6 +51,19 @@ class Articles extends Component {
     api.fetchArticles(topic).then(articles => {
       this.setState({ articles, topic });
     });
+  };
+
+  sortTable = (sortBy, order) => {
+    const { topic } = this.state;
+    api.fetchArticles(topic, sortBy, order).then(articles => {
+      this.setState({ articles, topic });
+    });
+  };
+
+  handleClick = event => {
+    const { updateArticleId } = this.props;
+    const { article_id } = event.target.id;
+    updateArticleId(article_id);
   };
 }
 
