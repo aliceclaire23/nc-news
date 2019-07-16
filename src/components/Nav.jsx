@@ -1,12 +1,21 @@
 import React from 'react';
 import { Link } from '@reach/router';
 
-function Navigation(props) {
+const Nav = ({ topics }) => {
   return (
-    <nav className='nav'>
-      <Link to='/'>All</Link>
-    </nav>
+    <ul className='nav'>
+      <li className='nav-item'>
+        <Link to='/'>All</Link>
+      </li>
+      {topics.map((topic, i) => {
+        return (
+          <li key={i} className='nav-item'>
+            <Link to={`/${topic.slug}`}>{topic.slug}</Link>
+          </li>
+        );
+      })}
+    </ul>
   );
-}
+};
 
-export default Navigation;
+export default Nav;
