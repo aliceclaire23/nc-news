@@ -27,7 +27,6 @@
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 0;
-  padding: 1.5rem;
 }
 
 .nav-item {
@@ -39,6 +38,7 @@
   grid-area: main;
   border: solid 5px goldenrod;
   background-color: moccasin;
+  overflow-y: scroll;
 }
 
 .footer {
