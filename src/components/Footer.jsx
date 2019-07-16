@@ -1,6 +1,10 @@
 import React from 'react';
 
-function Header(props) {
-  return <p>Footer nonsense...</p>;
+function Footer(props) {
+  return (
+    <div className='footer'>
+      <p>Footer nonsense...</p>
+    </div>
+  );
 }
-export default Header;
+export default Footer;
