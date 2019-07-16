@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Router } from '@reach/router';
 
 import './App.css';
@@ -11,38 +10,26 @@ import Footer from './components/Footer';
 
 class App extends Component {
   state = {
-    topics: [],
-    selectedTopic: ''
+    topic: ''
   };
 
   render() {
-    const { topics } = this.state;
     return (
       <div className='App'>
         <Header />
-        <Nav topics={topics} />
+        <Nav updateSelectedTopic={this.updateSelectedTopic} />
         <Router className='main'>
           <Articles path='/' />
+          <Articles path='/topics/:topic' topic={this.state.topic} />
         </Router>
         <Footer />
       </div>
     );
   }
 
-  componentDidMount = () => {
-    this.fetchTopics().then(topics => {
-      this.setState({ topics });
-    });
+  updateSelectedTopic = topic => {
+    this.setState({ topic });
   };
-
-  fetchTopics = async () => {
-    const { data } = await axios.get(
-      `https://ecila-nc-news-api.herokuapp.com/api/topics/`
-    );
-    return data.topics;
-  };
-
-  updateSelectedTopic = topic => {};
 }
 
 export default App;
