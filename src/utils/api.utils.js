@@ -7,4 +7,16 @@ const fetchTopics = async () => {
   return data.topics;
 };
 
-export default { fetchTopics };
+const fetchArticles = async topic => {
+  const {
+    data: { articles }
+  } = await axios.get(`${url}articles/`);
+
+  if (topic) {
+    return articles.filter(article => article.topic === 'coding');
+  }
+
+  return articles;
+};
+
+export default { fetchTopics, fetchArticles };
