@@ -5,7 +5,6 @@ import api from '../utils/api.utils';
 class Nav extends Component {
   state = {
     topics: []
-    // topic: ''
   };
 
   render() {
@@ -37,7 +36,6 @@ class Nav extends Component {
   handleClick = event => {
     const { updateSelectedTopic } = this.props;
     const { topic } = event.target.innerText;
-    // this.setState({ topic });
     updateSelectedTopic(topic);
   };
 }
