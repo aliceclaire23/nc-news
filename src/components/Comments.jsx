@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from '@reach/router';
 import api from '../utils/api.utils';
+import CommentForm from './CommentForm';
 
 class Comments extends Component {
   state = {
-    comments: []
+    comments: [],
+    isLoading: true
   };
 
   render() {
     const { comments } = this.state;
     const article_id = this.props.article_id;
-    return (
+    return this.state.isLoading ? (
+      <p>Loading...</p>
+    ) : (
       <div>
         {comments.map(comment => {
           return (
@@ -22,22 +25,37 @@ class Comments extends Component {
                 <button>+</button>
               </section>
               <p>{comment.author}</p>
-              <button>Delete Comment</button>
+              <button
+                data-comment={comment.comment_id}
+                onClick={this.destroyComment}
+              >
+                Delete Comment
+              </button>
             </div>
           );
         })}
-        <Link to={`/articles/${article_id}/comments/new-comment`}>
-          Add a Comment
-        </Link>
-        {this.props.children}
+        <CommentForm article_id={article_id} />
       </div>
     );
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const article_id = this.props.article_id;
-    api.fetchComments(article_id).then(comments => {
-      this.setState({ comments });
+    const comments = await api.fetchComments(article_id);
+    this.setState({ comments, isLoading: false });
+  };
+
+  destroyComment = ({
+    target: {
+      dataset: { comment: commentId }
+    }
+  }) => {
+    api.deleteComment(commentId);
+    this.setState(() => {
+      const comments = this.state.comments.filter(
+        comment => comment.comment_id !== +commentId
+      );
+      return { comments };
     });
   };
 }
