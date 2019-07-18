@@ -35,7 +35,7 @@ class Nav extends Component {
 
   handleClick = event => {
     const { updateSelectedTopic } = this.props;
-    const { topic } = event.target.innerText;
+    const topic = event.target.innerText;
     updateSelectedTopic(topic);
   };
 }
