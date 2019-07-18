@@ -28,4 +28,26 @@ const fetchArticleById = async article_id => {
   return article;
 };
 
-export default { fetchTopics, fetchArticles, fetchArticleById };
+const fetchComments = async article_id => {
+  const {
+    data: { comments }
+  } = await axios.get(`${url}articles/${article_id}/comments`);
+  return comments;
+};
+
+const postComment = async (comment, article_id) => {
+  console.log('posting a comment');
+  const { newComment } = await axios.post(
+    `${url}articles/${article_id}/comments`,
+    comment
+  );
+  return newComment;
+};
+
+export default {
+  fetchTopics,
+  fetchArticles,
+  fetchArticleById,
+  fetchComments,
+  postComment
+};
