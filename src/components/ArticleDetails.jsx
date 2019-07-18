@@ -25,7 +25,7 @@ class Articles extends Component {
         <section className='votes'>
           <button onClick={() => this.incVotes(-1)}>-</button>
           <span>{votes} votes</span>
-          <button onClick={() => this.incVotes(+1)}>+</button>
+          <button onClick={() => this.incVotes(1)}>+</button>
         </section>
         <Link to={`/articles/${article_id}/comments`}>Comments</Link>
         {this.props.children}

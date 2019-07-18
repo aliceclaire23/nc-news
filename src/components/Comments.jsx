@@ -5,7 +5,8 @@ import CommentForm from './CommentForm';
 class Comments extends Component {
   state = {
     comments: [],
-    isLoading: true
+    isLoading: true,
+    commentPatched: null
   };
 
   render() {
@@ -15,20 +16,17 @@ class Comments extends Component {
       <p>Loading...</p>
     ) : (
       <div>
-        {comments.map(comment => {
+        {comments.map(({ comment_id, body, votes, author }) => {
           return (
-            <div className='comment-card' key={comment.comment_id}>
-              <p>{comment.body}</p>
+            <div className='comment-card' key={comment_id}>
+              <p>{body}</p>
               <section className='votes'>
-                <button>-</button>
-                <span>{comment.votes} votes</span>
-                <button>+</button>
+                <button onClick={() => this.incVotes(-1, comment_id)}>-</button>
+                <span>{votes} votes</span>
+                <button onClick={() => this.incVotes(1, comment_id)}>+</button>
               </section>
-              <p>{comment.author}</p>
-              <button
-                data-comment={comment.comment_id}
-                onClick={this.destroyComment}
-              >
+              <p>{author}</p>
+              <button data-comment={comment_id} onClick={this.destroyComment}>
                 Delete Comment
               </button>
             </div>
@@ -43,6 +41,21 @@ class Comments extends Component {
     const article_id = this.props.article_id;
     const comments = await api.fetchComments(article_id);
     this.setState({ comments, isLoading: false });
+  };
+
+  incVotes = (inc_votes, comment_id) => {
+    api
+      .patchVotesById(inc_votes, comment_id, 'comments')
+      .then(patchedComment => {
+        this.setState(() => {
+          const comments = this.state.comments.map(comment => {
+            if (comment.comment_id === comment_id)
+              comment.votes = patchedComment.votes;
+            return comment;
+          });
+          return { comments };
+        });
+      });
   };
 
   destroyComment = ({
