@@ -16,7 +16,7 @@ const fetchArticles = async (topic, sortBy, order) => {
     data: { articles }
   } = await axios.get(articlesUrl);
 
-  if (topic) return articles.filter(article => article.topic === 'coding');
+  if (topic) return articles.filter(article => article.topic === topic);
 
   return articles;
 };
