@@ -55,20 +55,28 @@ class Articles extends Component {
             Comment Count Highest to Lowest
           </option>
         </select>
-        {articles.map(article => {
-          return (
-            <div key={article.article_id} className='article-card'>
-              <Link
-                to={`/articles/${article.article_id}`}
-                id={article.article_id}
-                onClick={this.handleClick}
-              >
-                {article.title}
-              </Link>
-              <span>{article.votes} votes</span>
-            </div>
-          );
-        })}
+        <div className='articles'>
+          {articles.map(
+            ({ article_id, title, votes, comment_count, author }) => {
+              return (
+                <div key={article_id} className='article-card'>
+                  <Link
+                    to={`/articles/${article_id}`}
+                    id={article_id}
+                    onClick={this.handleClick}
+                  >
+                    {title}
+                  </Link>
+                  <p>
+                    By <i>{author}</i>
+                  </p>
+                  <p>{comment_count} comments</p>
+                  <p>{votes} votes</p>
+                </div>
+              );
+            }
+          )}
+        </div>
       </div>
     );
   }
