@@ -49,11 +49,17 @@ const deleteComment = async commentId => {
   return data;
 };
 
+const patchVotesById = async (inc_votes, id, path) => {
+  const { data } = await axios.patch(`${url}${path}/${id}`, { inc_votes });
+  return data.article;
+};
+
 export default {
   fetchTopics,
   fetchArticles,
   fetchArticleById,
   fetchComments,
   postComment,
-  deleteComment
+  deleteComment,
+  patchVotesById
 };
