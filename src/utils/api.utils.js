@@ -44,10 +44,16 @@ const postComment = async (comment, article_id) => {
   return newComment;
 };
 
+const deleteComment = async commentId => {
+  const { data } = await axios.delete(`${url}comments/${commentId}`);
+  return data;
+};
+
 export default {
   fetchTopics,
   fetchArticles,
   fetchArticleById,
   fetchComments,
-  postComment
+  postComment,
+  deleteComment
 };
