@@ -30,6 +30,30 @@ class Articles extends Component {
           <option value='votes' onClick={() => this.sortTable('votes', 'desc')}>
             Votes Highest-Lowest
           </option>
+          <option
+            value='created_at'
+            onClick={() => this.sortTable('created_at', 'asc')}
+          >
+            Oldest first
+          </option>
+          <option
+            value='created_at'
+            onClick={() => this.sortTable('created_at', 'desc')}
+          >
+            Most Recent first
+          </option>
+          <option
+            value='comment_count'
+            onClick={() => this.sortTable('comment_count', 'asc')}
+          >
+            Comment Count Lowest to Highest
+          </option>
+          <option
+            value='comment_count'
+            onClick={() => this.sortTable('comment_count', 'desc')}
+          >
+            Comment Count Highest to Lowest
+          </option>
         </select>
         {articles.map(article => {
           return (
