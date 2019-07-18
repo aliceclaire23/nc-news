@@ -5,8 +5,7 @@ import CommentForm from './CommentForm';
 class Comments extends Component {
   state = {
     comments: [],
-    isLoading: true,
-    commentPatched: null
+    isLoading: true
   };
 
   render() {
