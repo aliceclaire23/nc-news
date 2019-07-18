@@ -8,7 +8,6 @@ import Nav from './components/Nav';
 import Articles from './components/Articles';
 import ArticleDetails from './components/ArticleDetails';
 import Comments from './components/Comments';
-import CommentForm from './components/CommentForm';
 import Footer from './components/Footer';
 
 class App extends Component {
@@ -33,12 +32,7 @@ class App extends Component {
             path='/articles/:article_id'
             article_id={this.state.article_id}
           >
-            <Comments path='/comments' article_id={this.state.article_id}>
-              <CommentForm
-                path='/new-comment'
-                article_id={this.state.article_id}
-              />
-            </Comments>
+            <Comments path='/comments' article_id={this.state.article_id} />
           </ArticleDetails>
         </Router>
         <Footer />
