@@ -3,19 +3,24 @@ import api from '../utils/api.utils';
 
 class CommentForm extends Component {
   state = {
-    username: '',
+    username: 'jessjelly',
     body: ''
   };
 
   render() {
     return (
       <form className='comment-form' onSubmit={this.handleSubmit}>
-        <div>
+        {/* input for custom username */}
+        {/* <div>
           <label htmlFor='username'>Username:</label>
           <input type='text' id='username' onChange={this.handleChange} />
-        </div>
+        </div> */}
+        <p>
+          You are currrently logged in as <i>{this.state.username}</i>
+        </p>
         <div>
           <label htmlFor='body'>New comment:</label>
+          <br />
           <textarea
             type='text'
             rows='4'
