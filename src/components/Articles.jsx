@@ -30,7 +30,7 @@ class Articles extends Component {
         </select>
         {articles.map(article => {
           return (
-            <div key={article.article_id} className='article'>
+            <div key={article.article_id} className='article-card'>
               <Link
                 to={`/articles/${article.article_id}`}
                 id={article.article_id}
@@ -51,6 +51,15 @@ class Articles extends Component {
     api.fetchArticles(topic).then(articles => {
       this.setState({ articles, topic });
     });
+  };
+
+  componentDidUpdate = async (prevProps, prevState) => {
+    if (this.state.topic !== this.props.topic) {
+      const topic = this.props.topic;
+      api.fetchArticles(topic).then(articles => {
+        this.setState({ articles, topic });
+      });
+    }
   };
 
   sortTable = (sortBy, order) => {
