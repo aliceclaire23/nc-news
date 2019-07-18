@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from '@reach/router';
 import api from '../utils/api.utils';
 
 class Articles extends Component {
@@ -9,7 +10,7 @@ class Articles extends Component {
   render() {
     const { article } = this.state;
     return (
-      <div>
+      <div className='article-details'>
         <h2>{article.title}</h2>
         <h4>By {article.author}</h4>
         <p>
@@ -21,6 +22,8 @@ class Articles extends Component {
           <span>{article.votes} votes</span>
           <button>+</button>
         </section>
+        <Link to={`/articles/${article.article_id}/comments`}>Comments</Link>
+        {this.props.children}
       </div>
     );
   }
