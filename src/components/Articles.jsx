@@ -5,12 +5,15 @@ import api from '../utils/api.utils';
 class Articles extends Component {
   state = {
     articles: [],
-    topic: ''
+    topic: '',
+    isLoading: true
   };
 
   render() {
     const { articles, topic } = this.state;
-    return (
+    return this.state.isLoading ? (
+      <p>Loading...</p>
+    ) : (
       <div>
         <h2>{topic ? `Articles about ${topic}` : 'All Articles'}</h2>
         <label htmlFor='sort_by'>Sort by:</label>
@@ -49,7 +52,7 @@ class Articles extends Component {
   componentDidMount = () => {
     const topic = this.props.topic;
     api.fetchArticles(topic).then(articles => {
-      this.setState({ articles, topic });
+      this.setState({ articles, topic, isLoading: false });
     });
   };
 
