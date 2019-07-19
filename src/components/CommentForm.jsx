@@ -23,8 +23,8 @@ class CommentForm extends Component {
           <br />
           <textarea
             type='text'
-            rows='4'
-            cols='50'
+            rows='6'
+            cols='35'
             id='body'
             onChange={this.handleChange}
           />
