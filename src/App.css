@@ -138,6 +138,7 @@ p {
 }
 
 button {
+  background-color: white;
   border: solid 2px teal;
   border-radius: 10px;
   outline: none;
