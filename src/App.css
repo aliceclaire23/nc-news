@@ -177,3 +177,30 @@ a:active {
     font-size: 1rem;
   }
 }
+
+@media only screen and (min-width: 1200px) {
+  .article-card {
+    width: 27%;
+  }
+
+  .article-details {
+    width: 80%;
+    font-size: 1.2rem;
+  }
+
+  .article-details p {
+    margin: 30px;
+  }
+
+  .comment-card {
+    font-size: 1rem;
+    padding-bottom: 30px;
+    margin: 20px auto;
+  }
+
+  button {
+    font-size: 1rem;
+    margin: 0 5px;
+    padding: 0 10px;
+  }
+}
