@@ -115,7 +115,6 @@ p {
 .footer {
   grid-area: footer;
   background-color: black;
-  color: teal;
   text-shadow: 1px 1px 1px grayx;
 }
 
@@ -131,6 +130,11 @@ p {
 .footer-item {
   margin: 10px auto;
   font-size: 0.8rem;
+  color: white;
+}
+
+.footer-item a {
+  color: teal;
 }
 
 button {
