@@ -25,7 +25,11 @@ class Comments extends Component {
                 <button onClick={() => this.incVotes(1, comment_id)}>+</button>
               </section>
               <p>{author}</p>
-              <button data-comment={comment_id} onClick={this.destroyComment}>
+              <button
+                className='delete-button'
+                data-comment={comment_id}
+                onClick={this.destroyComment}
+              >
                 Delete Comment
               </button>
             </div>

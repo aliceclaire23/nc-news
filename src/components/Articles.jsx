@@ -16,45 +16,59 @@ class Articles extends Component {
     ) : (
       <div>
         <h2>{topic ? `Articles about ${topic}` : 'All Articles'}</h2>
-        <label htmlFor='sort_by'>Sort by:</label>
-        <select id='sort_by'>
-          <option value='title' onClick={() => this.sortTable('title', 'asc')}>
-            Title A-Z
-          </option>
-          <option value='title' onClick={() => this.sortTable('title', 'desc')}>
-            Title Z-A
-          </option>
-          <option value='votes' onClick={() => this.sortTable('votes', 'asc')}>
-            Votes Lowest-Highest
-          </option>
-          <option value='votes' onClick={() => this.sortTable('votes', 'desc')}>
-            Votes Highest-Lowest
-          </option>
-          <option
-            value='created_at'
-            onClick={() => this.sortTable('created_at', 'asc')}
-          >
-            Oldest first
-          </option>
-          <option
-            value='created_at'
-            onClick={() => this.sortTable('created_at', 'desc')}
-          >
-            Most Recent first
-          </option>
-          <option
-            value='comment_count'
-            onClick={() => this.sortTable('comment_count', 'asc')}
-          >
-            Comment Count Lowest to Highest
-          </option>
-          <option
-            value='comment_count'
-            onClick={() => this.sortTable('comment_count', 'desc')}
-          >
-            Comment Count Highest to Lowest
-          </option>
-        </select>
+        <div id='sort-by'>
+          <label htmlFor='sort_by'>Sort by: </label>
+          <select id='sort_by'>
+            <option
+              value='title'
+              onClick={() => this.sortTable('title', 'asc')}
+            >
+              Title A-Z
+            </option>
+            <option
+              value='title'
+              onClick={() => this.sortTable('title', 'desc')}
+            >
+              Title Z-A
+            </option>
+            <option
+              value='votes'
+              onClick={() => this.sortTable('votes', 'asc')}
+            >
+              Votes Asc
+            </option>
+            <option
+              value='votes'
+              onClick={() => this.sortTable('votes', 'desc')}
+            >
+              Votes Desc
+            </option>
+            <option
+              value='created_at'
+              onClick={() => this.sortTable('created_at', 'asc')}
+            >
+              Oldest first
+            </option>
+            <option
+              value='created_at'
+              onClick={() => this.sortTable('created_at', 'desc')}
+            >
+              Most Recent first
+            </option>
+            <option
+              value='comment_count'
+              onClick={() => this.sortTable('comment_count', 'asc')}
+            >
+              Comments Asc
+            </option>
+            <option
+              value='comment_count'
+              onClick={() => this.sortTable('comment_count', 'desc')}
+            >
+              Comments Desc
+            </option>
+          </select>
+        </div>
         <div className='articles'>
           {articles.map(
             ({ article_id, title, votes, comment_count, author }) => {
@@ -65,13 +79,13 @@ class Articles extends Component {
                     id={article_id}
                     onClick={this.handleClick}
                   >
-                    {title}
+                    <h3>{title}</h3>
+                    <p>
+                      By <i>{author}</i>
+                    </p>
+                    <p>{comment_count} comments</p>
+                    <p>{votes} votes</p>
                   </Link>
-                  <p>
-                    By <i>{author}</i>
-                  </p>
-                  <p>{comment_count} comments</p>
-                  <p>{votes} votes</p>
                 </div>
               );
             }

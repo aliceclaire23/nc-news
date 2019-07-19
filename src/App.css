@@ -9,79 +9,171 @@
     'nav'
     'main'
     'footer';
+  font-family: 'Roboto', sans-serif;
 }
 
 .header {
   grid-area: header;
-  border: solid 5px cadetblue;
-  background-color: lightcyan;
+  background-color: black;
+  color: white;
+  text-shadow: 2px 2px 2px gray;
+  padding: 1rem;
   margin: 0;
 }
 
 .nav {
   grid-area: nav;
-  border: solid 5px mediumvioletred;
-  background-color: lightpink;
+  background-color: teal;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 0;
+  padding: 1rem;
 }
 
 .nav-item {
   list-style: none;
   margin: 0;
+  font-weight: 700;
+}
+
+.nav-item a {
+  color: black;
+  text-decoration: none;
 }
 
 .main {
   grid-area: main;
-  border: solid 5px goldenrod;
-  background-color: moccasin;
   overflow-y: scroll;
 }
 
+.articles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#sort-by {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
 .article-card {
-  border: solid mediumvioletred 1px;
-  margin: 1rem auto;
-  width: 50%;
+  margin: 0.5rem auto;
+  width: 250px;
+  border: 2px lightgrey solid;
+  border-radius: 10px;
+  box-shadow: 3px 3px gray;
+}
+
+.article-card h3,
+p {
+  color: black;
+  text-decoration: none;
+  margin: 5px 0;
 }
 
 .article-details {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
+  font-size: 0.8rem;
+}
+
+.article-details h2 {
+  margin-bottom: 0;
+}
+
+.article-details h4 {
+  margin: 0;
+}
+
+.article-details p {
+  margin: 10px;
+}
+
+#show-comments {
+  margin: 10px;
 }
 
 .comment-card {
-  border: solid mediumvioletred 1px;
-  margin: 1rem auto;
-  width: 80%;
+  margin: 10px auto;
+  background-color: lightgray;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.delete-button {
+  border: solid 2px firebrick;
 }
 
 .comment-form {
-  border: solid mediumvioletred 2px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
 .footer {
   grid-area: footer;
-  border: solid 5px midnightblue;
-  background-color: lightsteelblue;
+  background-color: black;
+  color: teal;
+  text-shadow: 1px 1px 1px grayx;
+}
+
+.footer ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: flex;
+  flex-direction: row;
+  padding: 0 20%;
+  margin: 0 auto;
+}
+
+.footer-item {
+  margin: 10px auto;
+  font-size: 0.8rem;
 }
 
 button {
-  border: solid 2px mediumvioletred;
+  border: solid 2px teal;
   border-radius: 10px;
-  position: relative;
   outline: none;
-  box-shadow: 0 3px darkmagenta;
+  box-shadow: 0 3px dimgray;
+  font-size: 0.8rem;
+  margin: 1px;
 }
 
 button:hover {
-  box-shadow: 0 2px darkmagenta;
+  box-shadow: 0 2px dimgray;
   top: 1px;
 }
 
 button:active {
   box-shadow: none;
   top: 3px;
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .nav-item {
+    font-size: 1.2rem;
+  }
+
+  .article-details {
+    font-size: 1rem;
+  }
+
+  .comment-card {
+    font-size: 0.9rem;
+    width: 60%;
+  }
+
+  .footer-item {
+    font-size: 1rem;
+  }
 }

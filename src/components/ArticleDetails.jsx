@@ -17,7 +17,9 @@ class Articles extends Component {
     ) : (
       <div className='article-details'>
         <h2>{title}</h2>
-        <h4>By {author}</h4>
+        <h4>
+          <i>By {author}</i>
+        </h4>
         <p>
           <i>{created_at}</i>
         </p>
@@ -27,7 +29,11 @@ class Articles extends Component {
           <span>{votes} votes</span>
           <button onClick={() => this.incVotes(1)}>+</button>
         </section>
-        <Link to={`/articles/${article_id}/comments`}>Comments</Link>
+
+        <div id='show-comments'>
+          <Link to={`/articles/${article_id}/comments`}>Comments</Link>
+        </div>
+
         {this.props.children}
       </div>
     );
