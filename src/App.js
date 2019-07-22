@@ -11,18 +11,14 @@ import Comments from './components/Comments';
 import Footer from './components/Footer';
 
 class App extends Component {
-  state = {
-    topic: ''
-  };
-
   render() {
     return (
       <div className='App'>
         <Header />
-        <Nav updateSelectedTopic={this.updateSelectedTopic} />
+        <Nav />
         <Router className='main'>
           <Articles path='/' />
-          <Articles path='/topics/:topic' topic={this.state.topic} />
+          <Articles path='/topics/:topic' />
           <ArticleDetails path='/articles/:article_id'>
             <Comments path='/comments' />
           </ArticleDetails>
@@ -31,10 +27,6 @@ class App extends Component {
       </div>
     );
   }
-
-  updateSelectedTopic = topic => {
-    this.setState({ topic });
-  };
 }
 
 export default App;

@@ -17,9 +17,7 @@ class Nav extends Component {
         {topics.map((topic, i) => {
           return (
             <li key={i} className='nav-item'>
-              <Link to={`/topics/${topic.slug}`} onClick={this.handleClick}>
-                {topic.slug}
-              </Link>
+              <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
             </li>
           );
         })}
@@ -31,12 +29,6 @@ class Nav extends Component {
     api.fetchTopics().then(topics => {
       this.setState({ topics });
     });
-  };
-
-  handleClick = event => {
-    const { updateSelectedTopic } = this.props;
-    const topic = event.target.innerText;
-    updateSelectedTopic(topic);
   };
 }
 
