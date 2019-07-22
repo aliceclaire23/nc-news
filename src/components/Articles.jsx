@@ -74,11 +74,7 @@ class Articles extends Component {
             ({ article_id, title, votes, comment_count, author }) => {
               return (
                 <div key={article_id} className='article-card'>
-                  <Link
-                    to={`/articles/${article_id}`}
-                    id={article_id}
-                    onClick={this.handleClick}
-                  >
+                  <Link to={`/articles/${article_id}`} id={article_id}>
                     <h3>{title}</h3>
                     <p>
                       By <i>{author}</i>
@@ -116,12 +112,6 @@ class Articles extends Component {
     api.fetchArticles(topic, sortBy, order).then(articles => {
       this.setState({ articles, topic });
     });
-  };
-
-  handleClick = event => {
-    const { updateArticleId } = this.props;
-    const { article_id } = event.target.id;
-    updateArticleId(article_id);
   };
 }
 
