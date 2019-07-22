@@ -11,7 +11,16 @@ class Articles extends Component {
 
   render() {
     const { articles, topic } = this.state;
-    const sortOptions = ['title', 'votes', 'created_at', 'comment_count'];
+    const sortOptions = [
+      { sortBy: 'title', order: 'asc' },
+      { sortBy: 'title', order: 'desc' },
+      { sortBy: 'votes', order: 'asc' },
+      { sortBy: 'votes', order: 'desc' },
+      { sortBy: 'created_at', order: 'asc' },
+      { sortBy: 'created_at', order: 'desc' },
+      { sortBy: 'comment_count', order: 'asc' },
+      { sortBy: 'comment_count', order: 'desc' }
+    ];
     return this.state.isLoading ? (
       <p>Loading...</p>
     ) : (
@@ -20,22 +29,14 @@ class Articles extends Component {
         <div id='sort-by'>
           <label htmlFor='sort_by'>Sort by: </label>
           <select id='sort_by'>
-            {sortOptions.map(option => {
+            {sortOptions.map(({ sortBy, order }) => {
               return (
-                <div>
-                  <option
-                    value={option}
-                    onClick={() => this.sortTable({ option }, 'asc')}
-                  >
-                    Title A-Z
-                  </option>
-                  <option
-                    value={option}
-                    onClick={() => this.sortTable({ option }, 'desc')}
-                  >
-                    Title Z-A
-                  </option>
-                </div>
+                <option
+                  value={sortBy}
+                  onClick={() => this.sortTable({ sortBy }, { order })}
+                >
+                  {sortBy} {order}
+                </option>
               );
             })}
           </select>
