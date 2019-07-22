@@ -33,7 +33,7 @@ class Articles extends Component {
               return (
                 <option
                   value={sortBy}
-                  onClick={() => this.sortTable({ sortBy }, { order })}
+                  onClick={() => this.sortTable(sortBy, order)}
                 >
                   {label}
                 </option>
