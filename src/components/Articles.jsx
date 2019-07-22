@@ -12,14 +12,14 @@ class Articles extends Component {
   render() {
     const { articles, topic } = this.state;
     const sortOptions = [
-      { sortBy: 'title', order: 'asc' },
-      { sortBy: 'title', order: 'desc' },
-      { sortBy: 'votes', order: 'asc' },
-      { sortBy: 'votes', order: 'desc' },
-      { sortBy: 'created_at', order: 'asc' },
-      { sortBy: 'created_at', order: 'desc' },
-      { sortBy: 'comment_count', order: 'asc' },
-      { sortBy: 'comment_count', order: 'desc' }
+      { label: 'Title A-Z', sortBy: 'title', order: 'asc' },
+      { label: 'Title Z-A', sortBy: 'title', order: 'desc' },
+      { label: 'Votes Low-High', sortBy: 'votes', order: 'asc' },
+      { label: 'Votes High-Low', sortBy: 'votes', order: 'desc' },
+      { label: 'Date Oldest First', sortBy: 'created_at', order: 'asc' },
+      { label: 'Date Most Recent', sortBy: 'created_at', order: 'desc' },
+      { label: 'Comments Low-High', sortBy: 'comment_count', order: 'asc' },
+      { label: 'Comments High-Low', sortBy: 'comment_count', order: 'desc' }
     ];
     return this.state.isLoading ? (
       <p>Loading...</p>
@@ -29,13 +29,13 @@ class Articles extends Component {
         <div id='sort-by'>
           <label htmlFor='sort_by'>Sort by: </label>
           <select id='sort_by'>
-            {sortOptions.map(({ sortBy, order }) => {
+            {sortOptions.map(({ sortBy, order, label }) => {
               return (
                 <option
                   value={sortBy}
                   onClick={() => this.sortTable({ sortBy }, { order })}
                 >
-                  {sortBy} {order}
+                  {label}
                 </option>
               );
             })}
