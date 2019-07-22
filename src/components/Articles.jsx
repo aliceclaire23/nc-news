@@ -80,8 +80,8 @@ class Articles extends Component {
     }
   };
 
-  sortTable = (sortBy, order) => {
-    api.fetchArticles(sortBy, order).then(articles => {
+  sortTable = (topic, sortBy, order) => {
+    api.fetchArticles(topic, sortBy, order).then(articles => {
       this.setState({ articles });
     });
   };
