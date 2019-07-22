@@ -50,8 +50,8 @@ class Comments extends Component {
     api
       .patchVotesById(inc_votes, comment_id, 'comments')
       .then(patchedComment => {
-        this.setState(() => {
-          const comments = this.state.comments.map(comment => {
+        this.setState(state => {
+          const comments = state.comments.map(comment => {
             if (comment.comment_id === comment_id)
               comment.votes = patchedComment.votes;
             return comment;
