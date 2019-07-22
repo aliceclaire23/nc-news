@@ -150,6 +150,7 @@ button {
   box-shadow: 0 3px dimgray;
   font-size: 0.8rem;
   margin: 1px;
+  position: relative;
 }
 
 button:hover {
