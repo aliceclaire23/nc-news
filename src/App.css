@@ -57,8 +57,49 @@
 }
 
 #sort-by {
-  font-size: 0.8rem;
   margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+#sort-by::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: 50%;
+  right: 4px;
+  border: 8px solid transparent;
+  border-top-color: white;
+  margin-top: -4px;
+}
+
+#sort-by::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 100%;
+  background: cadetblue;
+  pointer-events: none;
+  border-radius: 0 3px 3px 0;
+  top: 0;
+  right: 0;
+}
+
+#sort-by select {
+  margin: 0;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  background-color: lightgray;
+  border: 1px solid dimgray;
+  padding: 2px;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+#sort-by select::-ms-expand {
+  display: none;
 }
 
 .article-card {
