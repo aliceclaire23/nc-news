@@ -32,7 +32,7 @@ class Articles extends Component {
         </section>
 
         <div id='show-comments'>
-          <Link to={`/articles/${article_id}/comments`}>Comments</Link>
+          <Link to={`/articles/${article_id}/comments`}>View comments...</Link>
         </div>
 
         {this.props.children}

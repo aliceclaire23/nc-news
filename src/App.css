@@ -108,7 +108,12 @@ p {
 }
 
 #show-comments {
-  margin: 10px;
+  margin: 20px;
+}
+
+#show-comments a {
+  color: teal;
+  font-weight: 700;
 }
 
 .comment-card {
