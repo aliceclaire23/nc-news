@@ -10,7 +10,7 @@ class Articles extends Component {
 
   render() {
     const { articles } = this.state;
-    const { topic } = this.props;
+    const { topic } = this.props || null;
     const sortOptions = [
       { label: 'Title A-Z', sortBy: 'title', order: 'asc' },
       { label: 'Title Z-A', sortBy: 'title', order: 'desc' },
@@ -65,14 +65,14 @@ class Articles extends Component {
   }
 
   componentDidMount = () => {
-    const { topic } = this.props;
+    const { topic } = this.props || null;
     api.fetchArticles(topic).then(articles => {
       this.setState({ articles, isLoading: false });
     });
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    const { topic } = this.props;
+    const { topic } = this.props || null;
     if (prevProps.topic !== topic) {
       api.fetchArticles(topic).then(articles => {
         this.setState({ articles });
