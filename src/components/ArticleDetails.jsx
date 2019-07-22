@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import api from '../utils/api.utils';
+import data from '../utils/data.utils.js';
 
 class Articles extends Component {
   state = {
@@ -21,7 +22,7 @@ class Articles extends Component {
           <i>By {author}</i>
         </h4>
         <p>
-          <i>{created_at}</i>
+          <i>{data.formatDate(created_at)}</i>
         </p>
         <p>{body}</p>
         <section className='votes'>
