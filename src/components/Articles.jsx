@@ -11,6 +11,7 @@ class Articles extends Component {
 
   render() {
     const { articles, topic } = this.state;
+    const sortOptions = ['title', 'votes', 'created_at', 'comment_count'];
     return this.state.isLoading ? (
       <p>Loading...</p>
     ) : (
@@ -19,54 +20,24 @@ class Articles extends Component {
         <div id='sort-by'>
           <label htmlFor='sort_by'>Sort by: </label>
           <select id='sort_by'>
-            <option
-              value='title'
-              onClick={() => this.sortTable('title', 'asc')}
-            >
-              Title A-Z
-            </option>
-            <option
-              value='title'
-              onClick={() => this.sortTable('title', 'desc')}
-            >
-              Title Z-A
-            </option>
-            <option
-              value='votes'
-              onClick={() => this.sortTable('votes', 'asc')}
-            >
-              Votes Asc
-            </option>
-            <option
-              value='votes'
-              onClick={() => this.sortTable('votes', 'desc')}
-            >
-              Votes Desc
-            </option>
-            <option
-              value='created_at'
-              onClick={() => this.sortTable('created_at', 'asc')}
-            >
-              Oldest first
-            </option>
-            <option
-              value='created_at'
-              onClick={() => this.sortTable('created_at', 'desc')}
-            >
-              Most Recent first
-            </option>
-            <option
-              value='comment_count'
-              onClick={() => this.sortTable('comment_count', 'asc')}
-            >
-              Comments Asc
-            </option>
-            <option
-              value='comment_count'
-              onClick={() => this.sortTable('comment_count', 'desc')}
-            >
-              Comments Desc
-            </option>
+            {sortOptions.map(option => {
+              return (
+                <div>
+                  <option
+                    value={option}
+                    onClick={() => this.sortTable({ option }, 'asc')}
+                  >
+                    Title A-Z
+                  </option>
+                  <option
+                    value={option}
+                    onClick={() => this.sortTable({ option }, 'desc')}
+                  >
+                    Title Z-A
+                  </option>
+                </div>
+              );
+            })}
           </select>
         </div>
         <div className='articles'>
