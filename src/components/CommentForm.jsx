@@ -4,7 +4,8 @@ import api from '../utils/api.utils';
 class CommentForm extends Component {
   state = {
     username: 'jessjelly',
-    body: ''
+    body: '',
+    commentAdded: false
   };
 
   render() {
@@ -18,6 +19,7 @@ class CommentForm extends Component {
         <p>
           You are currrently logged in as <i>{this.state.username}</i>
         </p>
+        {this.state.commentAdded ? <p>Comment Added!</p> : null}
         <div>
           <label htmlFor='body'>New comment:</label>
           <br />
@@ -26,6 +28,7 @@ class CommentForm extends Component {
             rows='6'
             cols='35'
             id='body'
+            value={this.state.body}
             onChange={this.handleChange}
           />
         </div>
@@ -39,6 +42,11 @@ class CommentForm extends Component {
     const { username, body } = this.state;
     const article_id = this.props.article_id;
     api.postComment({ username, body }, article_id);
+    this.setState({
+      // username: '',
+      body: '',
+      commentAdded: true
+    });
   };
 
   handleChange = ({ target: { id, value } }) => {
