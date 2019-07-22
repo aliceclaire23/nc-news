@@ -5,12 +5,12 @@ import api from '../utils/api.utils';
 class Articles extends Component {
   state = {
     articles: [],
-    topic: '',
     isLoading: true
   };
 
   render() {
-    const { articles, topic } = this.state;
+    const { articles } = this.state;
+    const { topic } = this.props;
     const sortOptions = [
       { label: 'Title A-Z', sortBy: 'title', order: 'asc' },
       { label: 'Title Z-A', sortBy: 'title', order: 'desc' },
@@ -29,11 +29,12 @@ class Articles extends Component {
         <div id='sort-by'>
           <label htmlFor='sort_by'>Sort by: </label>
           <select id='sort_by'>
-            {sortOptions.map(({ sortBy, order, label }) => {
+            {sortOptions.map(({ sortBy, order, label }, i) => {
               return (
                 <option
                   value={sortBy}
-                  onClick={() => this.sortTable(sortBy, order)}
+                  onClick={() => this.sortTable(topic, sortBy, order)}
+                  key={i}
                 >
                   {label}
                 </option>
@@ -64,25 +65,24 @@ class Articles extends Component {
   }
 
   componentDidMount = () => {
-    const topic = this.props.topic;
+    const { topic } = this.props;
     api.fetchArticles(topic).then(articles => {
-      this.setState({ articles, topic, isLoading: false });
+      this.setState({ articles, isLoading: false });
     });
   };
 
-  componentDidUpdate = async (prevProps, prevState) => {
-    if (this.state.topic !== this.props.topic) {
-      const topic = this.props.topic;
+  componentDidUpdate = (prevProps, prevState) => {
+    const { topic } = this.props;
+    if (prevProps.topic !== topic) {
       api.fetchArticles(topic).then(articles => {
-        this.setState({ articles, topic });
+        this.setState({ articles });
       });
     }
   };
 
   sortTable = (sortBy, order) => {
-    const { topic } = this.state;
-    api.fetchArticles(topic, sortBy, order).then(articles => {
-      this.setState({ articles, topic });
+    api.fetchArticles(sortBy, order).then(articles => {
+      this.setState({ articles });
     });
   };
 }
