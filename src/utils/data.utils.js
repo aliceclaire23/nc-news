@@ -1,4 +1,4 @@
-formatDate = postgresDate => {
+const formatDate = postgresDate => {
   const reversedDate = postgresDate.match(/^.{10}/)[0];
   const newDate = reversedDate
     .split('-')
