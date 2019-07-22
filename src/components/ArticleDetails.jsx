@@ -47,7 +47,7 @@ class Articles extends Component {
   };
 
   incVotes = inc_votes => {
-    const article_id = this.state.article.article_id;
+    const article_id = this.props.article_id;
     api.patchVotesById(inc_votes, article_id, 'articles').then(article => {
       this.setState({ article, isLoading: false });
     });
