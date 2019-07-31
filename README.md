@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NC-News
 
-## Available Scripts
+NC News is a Reddit-style news application. Articles can be voted up or down, and commented on. Comments can also be voted up or down, or deleted altogether.
 
-In the project directory, you can run:
+The hosted website can be found here: http://nc-news.ecila.co.uk/
+The backend can be found here: https://ecila-nc-news-api.herokuapp.com/api
+Backend source code: https://github.com/Ecila23/NC-news-api
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+These instructions will get you set up to test and develop this project on your local machine. See [deployment](#deployment) for notes on how to deploy the project.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+You will need to install Node. It is best to do this through [Node Verison Manager](https://github.com/nvm-sh/nvm). You will also need a JavaScript-capable browser to view the website.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+Clone this repository. Navigate into the created folder and install the dependencies using `npm install`.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Testing
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The testing files can be found in the cypress directory. JSON resources for request stubbing belong in the fixtures directory, specification files belong in the integration directory and files that customise the behaviour of Cypress belong in the plugins and support directories. To run Cypress, use `npm run cy:open`. Cypress will open a new window, from which tests can be run. For more information on testing with Cypress, please see the [official website](https://www.cypress.io/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+I recommend [this excellent guide](https://facebook.github.io/create-react-app/docs/deployment) on deploying React apps. There are no unique deployment requirements of this app. However, it is advised that you set your deployment environment to production mode (usually by setting NODE_ENV to production) in order to prevent development dependencies being installed.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Built with
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Runtime environment: [node](https://nodejs.org/en/)
+- Package manager: [npm](https://www.npmjs.com/)
+- UI framework: [react](https://reactjs.org/)
+- Router: [reach router](https://reach.tech/router)
+- Testing framework: [Cypress](https://www.cypress.io/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Authors
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Alice-Claire Earle
 
-## Learn More
+## Acknowledgements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project was developed under the tuition of [Northcoders](https://northcoders.com/).
